@@ -508,6 +508,4 @@ void Sudoku_Solve()
         iterCount++;
 
     } //cellsToFill
-
-    Sudoku_PrintGrid();
 }

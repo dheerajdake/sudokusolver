@@ -23,7 +23,8 @@ void Sudoku_PrintGrid()
     {
         for (int j = 0; j < 9; j++)
         {
-            printf("{%d, %03x, %03x}    ", grid[i][j].value, grid[i][j].possibilities, grid[i][j].prophecy);
+            printf("%d ", grid[i][j].value);
+            DEBUG_PRINT("{%d, %03x, %03x}    ", grid[i][j].value, grid[i][j].possibilities, grid[i][j].prophecy);
         }
         printf("\n");
     }
@@ -31,12 +32,12 @@ void Sudoku_PrintGrid()
 
 void Sudoku_InitGrid()
 {
-    // Read suduko
+    // Read sudoku
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 9; j++)
         {
-            grid[i][j].value = suduko[i][j];
+            grid[i][j].value = sudoku[i][j];
 
             if (grid[i][j].value != 0)
             {
@@ -68,10 +69,10 @@ void Sudoku_UpdateCellBasedOnPossibilities(uint32_t row, uint32_t col)
                 cellsToFill--;
                 DEBUG_PRINT("Setting value %d based on power of two at [%d, %d] = %d\n", bit, row, col);
 
-                if (grid[row][col].value != answer[row][col])
-                {
-                    ASSERT(false, "Wrong value predicted\n");
-                }
+                //if (grid[row][col].value != answer[row][col])
+                //{
+                //    ASSERT(false, "Wrong value predicted\n");
+                //}
 
                 break;
             }
@@ -171,7 +172,7 @@ void Sudoku_Solve()
                                 grid[i][j].prophecy = 1;
                                 cellsToFill--;
 
-                                ASSERT(grid[i][j].value == answer[i][j], "Incorrect value set\n")
+                                //ASSERT(grid[i][j].value == answer[i][j], "Incorrect value set\n")
                                 break;
                             }
                         }
